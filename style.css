@@ -396,55 +396,94 @@ h2 {
     color: var(--text-secondary);
 }
 
-/* Video Placeholder / Mockup Frame */
-.video-placeholder {
+/* Live Site Button */
+.btn-live {
+    background: linear-gradient(135deg, var(--accent-cyan), #0891b2);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.25);
+}
+
+.btn-live:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+}
+
+/* Browser Mockup Frame */
+.browser-mockup {
     margin-top: 2.5rem;
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    position: relative;
-    aspect-ratio: 16/9;
-}
-
-.video-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.video-placeholder:hover img {
-    transform: scale(1.03);
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(7, 10, 19, 0.85) 100%);
+    background: #0f172a;
     display: flex;
-    align-items: flex-end;
-    padding: 1.5rem;
+    flex-direction: column;
 }
 
-.video-title {
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 500;
+.browser-header {
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
+    gap: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.browser-buttons {
+    display: flex;
     gap: 0.5rem;
 }
 
-.video-title svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
+.browser-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.browser-dot.close {
+    background-color: #ef4444;
+}
+
+.browser-dot.minimize {
+    background-color: #f59e0b;
+}
+
+.browser-dot.maximize {
+    background-color: #10b981;
+}
+
+.browser-address-bar {
+    flex-grow: 1;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.browser-content {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: #070a13;
+    position: relative;
+}
+
+.browser-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
 /* Responsive adjustments */
