@@ -1,9 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Sans+Tamil:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #ffffff;
+  --color-primary-foreground: #000000;
+  --color-secondary: #18181b;
+  --color-secondary-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-muted: #27272a;
+  --color-muted-foreground: #a1a1aa;
+  --color-accent: #27272a;
+  --color-accent-foreground: #ffffff;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-input: rgba(255, 255, 255, 0.15);
+  --color-ring: rgba(56, 189, 248, 0.4);
+}
+
 /* Reset and Global Styles */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
   margin: 0;
   padding: 0;
 }
@@ -629,10 +649,27 @@ body {
 
 /* Contact Footer Area */
 .contact-section {
-  border-top: 1px solid var(--border-subtle);
-  padding: 6rem 2rem 4rem;
+  width: 100%;
+  padding: 0 0 4rem;
   text-align: center;
   background: radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+  overflow: hidden;
+}
+
+/* Full-Bleed 3D Ribbon: Page Edge-to-Edge (Left to Right) */
+.ribbon-full-bleed {
+  width: 100%;
+  height: 290px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.contact-body {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem 0;
 }
 
 .contact-headline {

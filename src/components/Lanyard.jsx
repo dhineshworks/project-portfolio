@@ -793,6 +793,7 @@ const Lanyard = ({
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.NeutralToneMapping;
     renderer.toneMappingExposure = 1;
+    renderer.debug.checkShaderErrors = false;
     const canvas = renderer.domElement;
     canvas.className = 'lanyard-canvas';
     canvas.setAttribute('aria-hidden', 'true');

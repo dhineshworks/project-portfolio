@@ -5,25 +5,9 @@ import { ScrambleText } from './components/TextEffects';
 import HoverMember from './components/ui/HoverMember';
 import DaveWorkCarousel from './components/ui/DaveWorkCarousel';
 import WordsPreloader from './components/ui/WordsPreloader';
-import {
-  Mail,
-  Sparkles,
-  ArrowUpRight
-} from 'lucide-react';
-
-const GithubIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-  </svg>
-);
-
-const LinkedinIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-    <rect x="2" y="9" width="4" height="12"></rect>
-    <circle cx="4" cy="4" r="2"></circle>
-  </svg>
-);
+import RibbonType from './components/ui/RibbonType';
+import RevealLinks from './components/ui/RevealLinks';
+import FolderShowcase from './components/ui/FolderShowcase';
 
 // Skiper6 showcase images (defaults to /Id.jpg, ready for custom images)
 const showcaseMembers = [
@@ -83,8 +67,8 @@ export default function App() {
                   </a>
                 </li>
                 <li>
-                  <a href="#playground" className="nav-link">
-                    <span className="nav-num">02.</span> PLAYGROUND
+                  <a href="#toolkit" className="nav-link">
+                    <span className="nav-num">02.</span> TOOLKIT
                   </a>
                 </li>
                 <li>
@@ -249,6 +233,11 @@ export default function App() {
       <DaveWorkCarousel />
 
       {/* ─────────────────────────────────────────────────────────────
+          2. ICON FOLDERS: DEVELOPER, DESIGN TOOLS, DIGITAL MARKETING (#toolkit)
+      ───────────────────────────────────────────────────────────── */}
+      <FolderShowcase />
+
+      {/* ─────────────────────────────────────────────────────────────
           3. SKIPER6 INTERACTIVE SHOWCASE STRIP
       ───────────────────────────────────────────────────────────── */}
       <div id="personas">
@@ -263,92 +252,66 @@ export default function App() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          3. PLAYGROUND & EXPERIMENTS (#playground)
-      ───────────────────────────────────────────────────────────── */}
-      <section className="section-container" id="playground">
-        <div className="section-tag">
-          <Sparkles size={16} />
-          <span>02. CREATIVE EXPERIMENTS</span>
-        </div>
-        <h2 className="section-heading">Interactive Playground</h2>
-        <p className="section-subtext">
-          A collection of real-time WebGL experiments, kinetic typography studies, and physics simulations. Grab, rotate, and interact with the 3D ID badge above or explore the motion showcase below.
-        </p>
-        <div className="about-grid">
-          <div className="about-card" style={{ gridColumn: 'span 3' }}>
-            <h3 className="about-card-title">
-              <Sparkles size={22} style={{ color: 'var(--accent-blue)' }} />
-              Typography Preloader (Skiper8)
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.25rem' }}>
-              Multilingual animated greeting preloader inspired by Dennis Snellenberg with real-time SVG quadratic bezier curve exit transition and liquid slide-up lift.
-            </p>
-            <button
-              onClick={() => {
-                setHeroActive(false);
-                setShowPreloader(true);
-              }}
-              className="status-pill"
-              style={{ cursor: 'pointer', background: 'rgba(56, 189, 248, 0.1)', borderColor: 'var(--accent-blue)' }}
-            >
-              <span className="status-dot-glow" />
-              Replay Words Preloader (skiper8)
-            </button>
-          </div>
-
-          <div className="about-card" style={{ gridColumn: 'span 3' }}>
-            <h3 className="about-card-title">
-              <Sparkles size={22} style={{ color: 'var(--accent-blue)' }} />
-              Real-Time Physics Simulation
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-              The 3D ID badge on the hero is fully interactive — powered by a custom Verlet integration rope physics engine and Three.js PBR shader pipeline with specular sheen, holographic foil dispersion, and wind dynamics. Drag it with your mouse or swipe on touch devices.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          4. CONTACT SECTION (#contact)
+          2. CONTACT SECTION (#contact)
       ───────────────────────────────────────────────────────────── */}
       <footer className="contact-section" id="contact">
-        <div className="section-tag" style={{ justifyContent: 'center', marginBottom: '1.25rem' }}>
-          <span>03. GET IN TOUCH</span>
+        {/* Full-bleed 3D Ribbon Type (Spans 100% Page Width Edge-to-Edge, Left to Right) */}
+        <div className="ribbon-full-bleed">
+          <RibbonType
+            text="LET'S CREATE SOMETHING GREAT TOGETHER"
+            separator="   ✦   DHINESH KUMAR   ✦   "
+            colors={["#0c0f17", "#38bdf8"]}
+            band={true}
+            path="wave"
+            ribbons={1}
+            ribbonWidth={78}
+            textScale={0.52}
+            amplitude={55}
+            frequency={1.0}
+            depth={115}
+            twist={0.14}
+            twistSpeed={0.14}
+            speed={90}
+            direction="right"
+            flow={0.35}
+            tilt={-4}
+            perspective={32}
+            shading={0.65}
+            sheen={0.45}
+            draggable={true}
+            clickTwist={true}
+            fontFamily="'Space Grotesk', sans-serif"
+            fontWeight={700}
+            letterSpacing={0.08}
+            className="w-full h-full"
+          />
         </div>
-        <h2 className="contact-headline">Let's create something great together.</h2>
+
+        <div className="contact-body">
+          <div className="section-tag" style={{ justifyContent: 'center', marginBottom: '1.25rem' }}>
+            <span>03. GET IN TOUCH</span>
+          </div>
+
+          <h2 className="contact-headline">Let's create something great together.</h2>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
           Available for full-time engineering roles, creative collaborations, and high-impact digital projects.
         </p>
 
-        <a href="mailto:dhineshtn0@gmail.com" className="contact-email-btn">
-          <Mail size={18} />
-          dhineshtn0@gmail.com
-        </a>
-
-        <div className="social-links">
-          <a
-            href="https://github.com/dhineshworks"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <GithubIcon size={16} />
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/dhineshkumar-r-43baa8253"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link"
-          >
-            <LinkedinIcon size={16} />
-            LinkedIn
-          </a>
+        {/* Hover.dev Kinetic Reveal Links */}
+        <div className="reveal-links-container" style={{ margin: '2.5rem 0 3rem' }}>
+          <RevealLinks
+            links={[
+              { name: "GITHUB ↗", href: "https://github.com/dhineshworks" },
+              { name: "LINKEDIN ↗", href: "https://www.linkedin.com/in/dhineshkumar-r-43baa8253" },
+              { name: "EMAIL ↗", href: "mailto:dhineshtn0@gmail.com" },
+            ]}
+          />
         </div>
 
-        <p className="copyright-text">
-          © {new Date().getFullYear()} DHINESH KUMAR R. CRAFTED WITH REACT, THREE.JS &amp; CREATIVITY.
-        </p>
+          <p className="copyright-text">
+            © {new Date().getFullYear()} DHINESH KUMAR R. CRAFTED WITH REACT, THREE.JS &amp; CREATIVITY.
+          </p>
+        </div>
       </footer>
     </div>
   );
