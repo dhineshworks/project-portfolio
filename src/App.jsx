@@ -8,6 +8,8 @@ import WordsPreloader from './components/ui/WordsPreloader';
 import RibbonType from './components/ui/RibbonType';
 import RevealLinks from './components/ui/RevealLinks';
 import FolderShowcase from './components/ui/FolderShowcase';
+import AboutMarquee from './components/ui/AboutMarquee';
+import AboutSection from './components/ui/AboutSection';
 import MaajaCaseStudy from './pages/MaajaCaseStudy';
 
 // Skiper6 showcase images (defaults to /Id.jpg, ready for custom images)
@@ -112,18 +114,23 @@ export default function App() {
             <nav>
               <ul className="nav-links">
                 <li>
+                  <a href="#about" className="nav-link">
+                    <span className="nav-num">01.</span> ABOUT
+                  </a>
+                </li>
+                <li>
                   <a href="#work" className="nav-link">
-                    <span className="nav-num">01.</span> WORK
+                    <span className="nav-num">02.</span> WORK
                   </a>
                 </li>
                 <li>
                   <a href="#toolkit" className="nav-link">
-                    <span className="nav-num">02.</span> TOOLKIT
+                    <span className="nav-num">03.</span> TOOLKIT
                   </a>
                 </li>
                 <li>
                   <a href="#contact" className="nav-link">
-                    <span className="nav-num">03.</span> CONTACT ↗
+                    <span className="nav-num">04.</span> CONTACT ↗
                   </a>
                 </li>
               </ul>
@@ -268,7 +275,7 @@ export default function App() {
               LET'S CREATE SOMETHING GREAT TOGETHER.
             </div>
 
-            <a href="#work" className="footer-scroll-cta">
+            <a href="#about" className="footer-scroll-cta">
               <span>SCROLL DOWN</span>
               <span className="pipe">|</span>
               <span className="scroll-arrow">↓</span>
@@ -276,6 +283,16 @@ export default function App() {
           </footer>
         </div>
       </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          1.1 ABOUT MARQUEE (Continuous Infinite Moving Strip)
+      ───────────────────────────────────────────────────────────── */}
+      <AboutMarquee />
+
+      {/* ─────────────────────────────────────────────────────────────
+          1.2 ABOUT ME SECTION (#about)
+      ───────────────────────────────────────────────────────────── */}
+      <AboutSection />
 
       {/* ─────────────────────────────────────────────────────────────
           2. DAVE HOLLOWAY WEBGL PIXEL DISTORTION SHOWCASE (#work)
