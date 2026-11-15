@@ -377,16 +377,10 @@ export default function FolderShowcase() {
           })}
         </div>
 
-        {/* Spacious, Balanced Responsive Grid */}
+        {/* Spacious, Balanced Responsive Layout (Auto-Centered Rows) */}
         <motion.div
           layout
-          className={`w-full mx-auto justify-items-center gap-x-10 sm:gap-x-12 gap-y-16 sm:gap-y-20 ${
-            filteredFolders.length === 2
-              ? "grid grid-cols-1 md:grid-cols-2 max-w-[880px]"
-              : filteredFolders.length === 3
-              ? "grid grid-cols-1 md:grid-cols-3 max-w-[1200px]"
-              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 max-w-[1240px]"
-          }`}
+          className="flex flex-wrap justify-center items-center gap-x-10 sm:gap-x-12 gap-y-16 sm:gap-y-20 w-full max-w-[1280px] mx-auto"
         >
           <AnimatePresence mode="popLayout">
             {filteredFolders.map((item) => (
@@ -397,7 +391,7 @@ export default function FolderShowcase() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.28, ease: "easeOut" }}
-                className="w-full flex justify-center max-w-[390px]"
+                className="flex justify-center w-full sm:w-[380px] max-w-[390px]"
               >
                 <IconFolder
                   title={item.title}
