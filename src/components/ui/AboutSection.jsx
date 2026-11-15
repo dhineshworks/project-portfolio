@@ -5,70 +5,77 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#050608] border-b border-neutral-900 text-neutral-100 overflow-hidden"
+      className="relative w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-black border-b border-neutral-900 text-neutral-100 overflow-hidden"
     >
       {/* Background Ambient Glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,rgba(56,189,248,0.05),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,rgba(56,189,248,0.04),transparent)]" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* ─────────────────────────────────────────────────────────
-              Left Column: Architectural Portrait Card (5 cols)
+              Left Column: Standalone 3D Character Turntable (No Box/Card Container)
           ───────────────────────────────────────────────────────── */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
-            <div className="relative w-full max-w-[390px] rounded-3xl p-3 bg-gradient-to-b from-white/10 to-white/5 border border-white/15 shadow-2xl backdrop-blur-xl">
-              {/* Corner Hardware Crosshairs */}
-              <div className="absolute top-2 left-2 text-[10px] font-mono text-neutral-500">⌜</div>
-              <div className="absolute top-2 right-2 text-[10px] font-mono text-neutral-500">⌝</div>
-              <div className="absolute bottom-2 left-2 text-[10px] font-mono text-neutral-500">⌞</div>
-              <div className="absolute bottom-2 right-2 text-[10px] font-mono text-neutral-500">⌟</div>
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="relative w-full max-w-[420px] flex flex-col items-center">
+              
+              {/* Standalone 3D Turntable Video - Unconstrained, Free-Standing */}
+              <div className="relative w-full aspect-[9/16] max-h-[620px] flex items-center justify-center">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  poster="/videos/character_turntable_poster.jpg"
+                  className="w-full h-full object-contain pointer-events-none select-none"
+                >
+                  <source src="/videos/character_turntable.webm" type="video/webm" />
+                  <source src="/videos/character_turntable.mp4" type="video/mp4" />
+                </video>
 
-              {/* Portrait Container */}
-              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-950 border border-white/10">
-                <img
-                  src="/Id.jpg"
-                  alt="Dhinesh Kumar R"
-                  className="w-full h-full object-cover object-top filter grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
-                  loading="lazy"
-                />
+                {/* Ambient Floor Pedestal Glow under feet */}
+                <div className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 w-56 h-10 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.22)_0%,rgba(147,51,234,0.12)_45%,transparent_70%)] blur-lg" />
 
-                {/* Ambient vignette */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Floating Bottom Stamp */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono text-neutral-300 backdrop-blur-md bg-black/60 px-3 py-2 rounded-xl border border-white/10">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Open to roles</span>
-                  </span>
+                {/* Floating Status Pill */}
+                <div className="absolute top-4 left-2 sm:left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 border border-white/10 backdrop-blur-md text-[11px] font-mono text-neutral-300 shadow-xl">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Open to roles</span>
+                  <span className="text-neutral-500">•</span>
                   <span className="text-neutral-400">DEV × DESIGN</span>
+                </div>
+
+                {/* 360° Turntable Mode Indicator */}
+                <div className="absolute top-4 right-2 sm:right-4 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/70 border border-white/10 backdrop-blur-md text-[10px] font-mono text-neutral-400 uppercase tracking-wider shadow-xl">
+                  <span className="text-sky-400 font-bold">360°</span>
+                  <span>TURNTABLE</span>
                 </div>
               </div>
 
-              {/* Location & Quick Meta Strip */}
-              <div className="mt-3.5 px-2 py-1 flex items-center justify-between text-xs font-mono text-neutral-400">
+              {/* Location Strip */}
+              <div className="w-full mt-1 px-3 flex items-center justify-between text-xs font-mono text-neutral-400">
                 <span className="flex items-center gap-1.5 text-neutral-300">
                   <MapPin size={13} className="text-sky-400" />
                   <span>India (IST)</span>
                 </span>
                 <span>Available Worldwide</span>
               </div>
-            </div>
 
-            {/* Quick Metrics Bar */}
-            <div className="mt-6 w-full max-w-[390px] grid grid-cols-3 gap-2.5">
-              <div className="p-3.5 rounded-xl bg-neutral-900/70 border border-neutral-800 text-center">
-                <span className="block text-xl font-bold font-mono text-white tabular-nums">04+</span>
-                <span className="text-[11px] font-mono text-neutral-400">Years Exp</span>
+              {/* Quick Metrics Bar */}
+              <div className="mt-4 w-full grid grid-cols-3 gap-2.5">
+                <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800/80 text-center backdrop-blur-sm">
+                  <span className="block text-xl font-bold font-mono text-white tabular-nums">04+</span>
+                  <span className="text-[11px] font-mono text-neutral-400">Years Exp</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800/80 text-center backdrop-blur-sm">
+                  <span className="block text-xl font-bold font-mono text-white">Flutter</span>
+                  <span className="text-[11px] font-mono text-neutral-400">Mobile Dev</span>
+                </div>
+                <div className="p-3.5 rounded-xl bg-neutral-900/60 border border-neutral-800/80 text-center backdrop-blur-sm">
+                  <span className="block text-xl font-bold font-mono text-white">Three.js</span>
+                  <span className="text-[11px] font-mono text-neutral-400">3D WebGL</span>
+                </div>
               </div>
-              <div className="p-3.5 rounded-xl bg-neutral-900/70 border border-neutral-800 text-center">
-                <span className="block text-xl font-bold font-mono text-white">Flutter</span>
-                <span className="text-[11px] font-mono text-neutral-400">Mobile Dev</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-neutral-900/70 border border-neutral-800 text-center">
-                <span className="block text-xl font-bold font-mono text-white">Three.js</span>
-                <span className="text-[11px] font-mono text-neutral-400">3D WebGL</span>
-              </div>
+
             </div>
           </div>
 
