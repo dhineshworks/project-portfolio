@@ -8,6 +8,7 @@ import WordsPreloader from './components/ui/WordsPreloader';
 import RibbonType from './components/ui/RibbonType';
 import RevealLinks from './components/ui/RevealLinks';
 import FolderShowcase from './components/ui/FolderShowcase';
+import MaajaCaseStudy from './pages/MaajaCaseStudy';
 
 // Skiper6 showcase images (defaults to /Id.jpg, ready for custom images)
 const showcaseMembers = [
@@ -20,6 +21,12 @@ const showcaseMembers = [
 ];
 
 export default function App() {
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    if (typeof window === 'undefined') return 'home';
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+    return path.startsWith('/project/maaja') || hash.includes('project/maaja') ? 'maaja' : 'home';
+  });
   const [showPreloader, setShowPreloader] = useState(true);
   const [heroActive, setHeroActive] = useState(false);
   const [isMobile, setIsMobile] = useState(
@@ -31,6 +38,49 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const handleRouteCheck = () => {
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+      const isMaaja = path.startsWith('/project/maaja') || hash.includes('project/maaja');
+      setCurrentRoute(isMaaja ? 'maaja' : 'home');
+    };
+    window.addEventListener('popstate', handleRouteCheck);
+    window.addEventListener('hashchange', handleRouteCheck);
+
+    const handleAnchorClick = (e) => {
+      const a = e.target.closest('a');
+      if (a) {
+        const href = a.getAttribute('href');
+        if (href === '/project/maaja' || href === '#/project/maaja') {
+          e.preventDefault();
+          window.history.pushState(null, '', '/project/maaja');
+          setCurrentRoute('maaja');
+          window.scrollTo(0, 0);
+        }
+      }
+    };
+    document.addEventListener('click', handleAnchorClick);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteCheck);
+      window.removeEventListener('hashchange', handleRouteCheck);
+      document.removeEventListener('click', handleAnchorClick);
+    };
+  }, []);
+
+  if (currentRoute === 'maaja') {
+    return (
+      <MaajaCaseStudy
+        onBack={() => {
+          window.history.pushState(null, '', '/');
+          setCurrentRoute('home');
+          window.scrollTo(0, 0);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="portfolio-wrapper">

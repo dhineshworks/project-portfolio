@@ -164,7 +164,7 @@ export function IconFolder({
         setHover(false);
         setHi(null);
       }}
-      className={`relative isolate h-[290px] w-full max-w-[410px] cursor-pointer select-none outline-none [-webkit-tap-highlight-color:transparent] focus-visible:rounded-3xl focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 ${className}`}
+      className={`relative isolate h-[305px] w-full max-w-[400px] cursor-pointer select-none outline-none [-webkit-tap-highlight-color:transparent] focus-visible:rounded-3xl focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 ${className}`}
       style={{
         color: t.ink,
         fontFamily: "'Space Grotesk', 'Geist', system-ui, sans-serif",
@@ -273,7 +273,7 @@ export function IconFolder({
       {/* Glass Front Pocket */}
       <div
         ref={frontRef}
-        className="absolute inset-x-0 bottom-0 h-[180px] overflow-hidden backdrop-blur-xl backdrop-saturate-150"
+        className="absolute inset-x-0 bottom-0 h-[195px] overflow-hidden backdrop-blur-xl backdrop-saturate-150"
         style={{
           background: t.front,
           clipPath: frontD ? `path('${frontD}')` : undefined,

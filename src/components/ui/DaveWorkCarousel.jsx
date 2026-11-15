@@ -6,47 +6,14 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 const projects = [
   {
     id: '01',
-    code: 'DKP',
-    client: 'DHINESH KUMAR R',
-    title: 'Interactive 3D Portfolio & Motion Lab',
-    desc: 'High-performance creative developer showcase featuring real-time Verlet physics rope simulation, Three.js PBR shaders, and fluid WebGL distortion.',
-    tags: ['REACT', 'THREE.JS', 'VERLET PHYSICS', 'WEBGL', 'GSAP'],
-    image: '/Id.jpg',
-    color: '#38bdf8',
-    link: '#work'
-  },
-  {
-    id: '02',
-    code: 'FST',
-    client: 'FULL STACK ARCHITECTURE',
-    title: 'Modular Web Applications & RESTful APIs',
-    desc: 'Production-ready full stack engineering with React, Node.js, Express, MongoDB, and secure authenticated endpoints with microsecond responses.',
-    tags: ['NODE.JS', 'EXPRESS', 'MONGODB', 'REST API', 'TAILWIND'],
-    image: '/Id.jpg',
-    color: '#818cf8',
-    link: '#about'
-  },
-  {
-    id: '03',
-    code: 'MTN',
-    client: 'CREATIVE & MULTIMEDIA',
-    title: 'Visual Identity, Motion Graphics & UI/UX',
-    desc: 'Bespoke brand storytelling, smooth kinetic typography, design systems, and video production crafted for high-impact digital impressions.',
-    tags: ['UI/UX', 'MOTION GRAPHICS', 'BRAND DESIGN', 'AFTER EFFECTS'],
-    image: '/Id.jpg',
-    color: '#f43f5e',
-    link: '#playground'
-  },
-  {
-    id: '04',
-    code: 'EXP',
-    client: 'WEBGL EXPERIMENTS',
-    title: 'Fluid Grid Refraction & Shader Physics',
-    desc: 'Interactive shader mathematics mapping cursor velocity to real-time grid refraction, chromatic aberration fringes, and radial shockwave bursts.',
-    tags: ['GLSL', 'DATA TEXTURE', 'CHROMATIC ABERRATION', 'MATTER.JS'],
-    image: '/Id.jpg',
-    color: '#22c55e',
-    link: '#playground'
+    code: 'MJA',
+    client: 'FLUTTER ARCHITECTURE',
+    title: 'Maaja — Offline Life Manager & Document AI',
+    desc: 'Cross-platform Flutter personal operating system with on-device document OCR, encrypted SQLite ledgers, and hardware biometric authentication.',
+    tags: ['FLUTTER', 'DART', 'ON-DEVICE OCR', 'SQLITE', 'THREE.JS'],
+    image: '/projects/maaja/welcome_auth.jpg',
+    color: '#8b5cf6',
+    link: '/project/maaja'
   }
 ];
 
@@ -73,7 +40,7 @@ export default function DaveWorkCarousel() {
         </div>
         <div className="dave-header-row">
           <h2 className="dave-heading glow-text">Featured Projects</h2>
-          
+
           {/* Carousel Navigation Controls */}
           <div className="dave-nav-controls">
             <span className="dave-slide-counter font-tech">
@@ -82,24 +49,26 @@ export default function DaveWorkCarousel() {
               <span>0{projects.length}</span>
             </span>
 
-            <div className="dave-btn-group">
-              <button
-                onClick={prevSlide}
-                className="dave-carousel-btn"
-                aria-label="Previous Project"
-                title="Previous Project"
-              >
-                <ArrowLeft size={18} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="dave-carousel-btn"
-                aria-label="Next Project"
-                title="Next Project"
-              >
-                <ArrowRight size={18} />
-              </button>
-            </div>
+            {projects.length > 1 && (
+              <div className="dave-btn-group">
+                <button
+                  onClick={prevSlide}
+                  className="dave-carousel-btn"
+                  aria-label="Previous Project"
+                  title="Previous Project"
+                >
+                  <ArrowLeft size={18} />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="dave-carousel-btn"
+                  aria-label="Next Project"
+                  title="Next Project"
+                >
+                  <ArrowRight size={18} />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -165,22 +134,44 @@ export default function DaveWorkCarousel() {
               </div>
             </div>
 
-            {/* Right Media Column: Three.js Interactive Pixel Distortion Canvas */}
-            <div className="dave-card-right">
-              <div className="dave-canvas-frame">
-                <PixelDistortionCanvas
-                  imageSrc={current.image}
-                  gridSize={14}
-                  strength={0.14}
-                  relaxation={0.94}
-                  radius={0.34}
-                  triggerBurst={true}
-                />
+            {/* Right Media Column: Centered Titanium Phone with Three.js Pixel Distortion */}
+            <div className="dave-card-right flex items-center justify-center p-4 sm:p-8 overflow-hidden bg-[#08080a]">
+              <div className="relative w-full h-full min-h-[460px] flex items-center justify-center">
+                {/* Centered Phone Frame matching native screenshot aspect ratio */}
+                <a
+                  href={current.link}
+                  className="group/phone relative h-[440px] max-h-[92%] aspect-[462/1024] rounded-[38px] p-[7px] bg-gradient-to-b from-[#2b2d35] via-[#1a1c22] to-[#101114] border border-white/20 shadow-2xl shadow-black/90 transition-transform duration-300 hover:scale-[1.025] flex flex-col overflow-hidden cursor-pointer"
+                  aria-label={`View ${current.title} case study`}
+                >
+                  {/* Dynamic Island Notch */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 w-18 h-3.5 rounded-full bg-black border border-white/10 flex items-center justify-between px-2 pointer-events-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 border border-neutral-700/60" />
+                    <span className="w-1 h-1 rounded-full bg-neutral-800" />
+                  </div>
+
+                  {/* Phone Screen Canvas (Exact 1:1 Aspect Ratio of welcome_auth.jpg) */}
+                  <div className="relative w-full h-full rounded-[31px] overflow-hidden bg-black">
+                    <PixelDistortionCanvas
+                      imageSrc={current.image}
+                      gridSize={14}
+                      strength={0.14}
+                      relaxation={0.94}
+                      radius={0.34}
+                      triggerBurst={true}
+                    />
+
+                    {/* Specular Glass Sheen Highlight */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/15 opacity-60 group-hover/phone:opacity-85 transition-opacity" />
+
+                    {/* Bottom Home Indicator */}
+                    <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-20 h-1 rounded-full bg-neutral-800/80 pointer-events-none" />
+                  </div>
+                </a>
 
                 {/* Subtle corner tech markings */}
                 <div className="dave-corner-tl" />
                 <div className="dave-corner-br" />
-                
+
                 {/* Floating badge */}
                 <div className="dave-webgl-badge font-tech">
                   <span className="dave-live-dot" />
@@ -193,19 +184,21 @@ export default function DaveWorkCarousel() {
       </div>
 
       {/* Progress Dots Track */}
-      <div className="dave-dots-track">
-        {projects.map((p, idx) => (
-          <button
-            key={p.id}
-            onClick={() => setCurrentIndex(idx)}
-            className={`dave-dot-item ${idx === currentIndex ? 'active' : ''}`}
-            aria-label={`Jump to slide ${idx + 1}`}
-          >
-            <span className="dave-dot-bar" />
-            <span className="dave-dot-label font-tech">{p.code}</span>
-          </button>
-        ))}
-      </div>
+      {projects.length > 1 && (
+        <div className="dave-dots-track">
+          {projects.map((p, idx) => (
+            <button
+              key={p.id}
+              onClick={() => setCurrentIndex(idx)}
+              className={`dave-dot-item ${idx === currentIndex ? 'active' : ''}`}
+              aria-label={`Jump to slide ${idx + 1}`}
+            >
+              <span className="dave-dot-bar" />
+              <span className="dave-dot-label font-tech">{p.code}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
