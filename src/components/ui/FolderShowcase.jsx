@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import IconFolder from "./icon-folder";
 
 /* ------------------------------------------------------------- */
@@ -219,221 +220,197 @@ const productArchitectureIcons = [
   },
 ];
 
+/* ------------------------------------------------------------- */
+/*  All 8 Curated Folders Metadata                               */
+/* ------------------------------------------------------------- */
+const allFolders = [
+  {
+    id: "frontend",
+    category: "dev",
+    title: "Frontend",
+    badge: "FRONTEND STACK",
+    tags: ["React.js", "JavaScript", "Tailwind CSS", "HTML5 / CSS3", "REST APIs"],
+    icons: frontendIcons,
+    spread: 52,
+  },
+  {
+    id: "backend",
+    category: "dev",
+    title: "Backend",
+    badge: "BACKEND STACK",
+    tags: ["Node.js", "Express.js", "MongoDB", "Supabase", "REST APIs"],
+    icons: backendIcons,
+    spread: 60,
+  },
+  {
+    id: "mobile",
+    category: "dev",
+    title: "Mobile Apps",
+    badge: "MOBILE DEV",
+    tags: ["Flutter", "Dart", "Android", "iOS", "Cross-Platform"],
+    icons: mobileIcons,
+    spread: 68,
+  },
+  {
+    id: "design",
+    category: "design",
+    title: "UI/UX Design",
+    badge: "UI & VISUAL",
+    tags: ["Figma", "Photoshop", "Illustrator", "Adobe XD", "UI/UX"],
+    icons: designIcons,
+    spread: 60,
+  },
+  {
+    id: "motion",
+    category: "design",
+    title: "Motion & Video",
+    badge: "MOTION & VIDEO",
+    tags: ["After Effects", "Premiere Pro", "Media Encoder", "2D Motion"],
+    icons: motionIcons,
+    spread: 68,
+  },
+  {
+    id: "ai",
+    category: "strategy",
+    title: "AI & Automation",
+    badge: "AI & AUTOMATION",
+    tags: ["Google Gemini", "OpenRouter", "OpenAI", "Prompt Eng", "Automations"],
+    icons: aiIcons,
+    spread: 68,
+  },
+  {
+    id: "marketing",
+    category: "strategy",
+    title: "Digital Marketing",
+    badge: "MARKETING",
+    tags: ["Meta Ads", "Facebook Ads", "Instagram Ads", "Lead Gen", "Campaigns"],
+    icons: marketingIcons,
+    spread: 68,
+  },
+  {
+    id: "product",
+    category: "strategy",
+    title: "Product Strategy",
+    badge: "ARCHITECTURE",
+    tags: ["SaaS Planning", "Architecture", "Database Design", "RBAC", "Dashboards"],
+    icons: productArchitectureIcons,
+    spread: 60,
+  },
+];
+
+/* ------------------------------------------------------------- */
+/*  Category Filter Tabs                                         */
+/* ------------------------------------------------------------- */
+const filterTabs = [
+  { id: "all", label: "All Capabilities", count: 8 },
+  { id: "dev", label: "Engineering", count: 3 },
+  { id: "design", label: "Design & Motion", count: 2 },
+  { id: "strategy", label: "AI & Strategy", count: 3 },
+];
+
 export default function FolderShowcase() {
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredFolders =
+    activeFilter === "all"
+      ? allFolders
+      : allFolders.filter((f) => f.category === activeFilter);
+
   return (
     <section
-      className="folders-section relative py-24 px-4 md:px-8 border-t border-neutral-900 bg-black/60 overflow-hidden"
+      className="folders-section relative py-24 sm:py-32 px-4 md:px-8 border-t border-neutral-900 bg-black/60 overflow-hidden"
       id="toolkit"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-      }}
     >
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(56,189,248,0.06),transparent)]" />
 
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1360px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center">
         {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "4rem", maxWidth: "680px" }}>
-          <div
-            className="section-tag"
-            style={{ justifyContent: "center", display: "flex", marginBottom: "0.75rem" }}
-          >
+        <div className="text-center mb-10 max-w-2xl">
+          <div className="section-tag justify-center flex mb-3">
             <span>02. TOOLKIT &amp; EXPERTISE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white mb-4">
             Curated Capabilities.
           </h2>
-          <p
-            style={{
-              color: "var(--text-secondary)",
-              fontSize: "1.05rem",
-              margin: "0 auto",
-              lineHeight: "1.6",
-            }}
-          >
-            Explore the specialized environments, engineering frameworks, and production tools powering
-            every software, visual design, and motion project. Hover or tap each folder to open.
+          <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+            Explore the specialized environments, engineering frameworks, and creative suites powering
+            every digital experience. Hover or tap each folder to inspect.
           </p>
         </div>
 
-        {/* Responsive Grid with 8 Interactive Icon Folders */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-16 sm:gap-y-20 w-full max-w-[1360px] mx-auto justify-items-center">
-          {/* 1. Frontend Development */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Frontend"
-              badge="FRONTEND STACK"
-              tags={[
-                "React.js",
-                "JavaScript",
-                "Tailwind CSS",
-                "HTML5",
-                "CSS3",
-                "REST APIs",
-                "Responsive Web",
-              ]}
-              icons={frontendIcons}
-              spread={54}
-              theme="dark"
-            />
-          </div>
-
-          {/* 2. Backend Development */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Backend"
-              badge="BACKEND STACK"
-              tags={[
-                "Node.js",
-                "Express.js",
-                "MongoDB",
-                "Supabase",
-                "REST APIs",
-                "Auth & RBAC",
-                "Databases",
-              ]}
-              icons={backendIcons}
-              spread={64}
-              theme="dark"
-            />
-          </div>
-
-          {/* 3. App Development */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Mobile Apps"
-              badge="MOBILE DEVELOPMENT"
-              tags={[
-                "Flutter",
-                "Dart",
-                "Android",
-                "iOS",
-                "Cross-Platform",
-                "Material 3",
-                "Mobile UI",
-                "API Integration",
-              ]}
-              icons={mobileIcons}
-              spread={72}
-              theme="dark"
-            />
-          </div>
-
-          {/* 4. UI/UX & Graphic Design */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="UI & Visual Design"
-              badge="UI & VISUAL DESIGN"
-              tags={[
-                "Figma",
-                "Photoshop",
-                "Illustrator",
-                "Adobe XD",
-                "UI/UX Design",
-                "Web Design",
-                "Mobile UI",
-                "Branding",
-              ]}
-              icons={designIcons}
-              spread={64}
-              theme="dark"
-            />
-          </div>
-
-          {/* 5. Motion Graphics & Video Editing */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Motion & Video"
-              badge="MOTION & VIDEO"
-              tags={[
-                "After Effects",
-                "Premiere Pro",
-                "Media Encoder",
-                "Motion Graphics",
-                "2D Animation",
-                "Video Editing",
-                "Kinetic Type",
-              ]}
-              icons={motionIcons}
-              spread={72}
-              theme="dark"
-            />
-          </div>
-
-          {/* 6. AI & Emerging Technologies */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="AI & Automation"
-              badge="AI & AUTOMATION"
-              tags={[
-                "Google Gemini",
-                "OpenRouter",
-                "OpenAI",
-                "Prompt Engineering",
-                "AI APIs",
-                "AI Video/Image",
-                "Automations",
-              ]}
-              icons={aiIcons}
-              spread={72}
-              theme="dark"
-            />
-          </div>
-
-          {/* 7. Digital Marketing & Advertising */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Digital Marketing"
-              badge="DIGITAL MARKETING"
-              tags={[
-                "Meta Ads",
-                "Facebook Ads",
-                "Instagram Ads",
-                "Lead Generation",
-                "Campaigns",
-                "Ad Creatives",
-                "Social Media",
-              ]}
-              icons={marketingIcons}
-              spread={72}
-              theme="dark"
-            />
-          </div>
-
-          {/* 8. Product Strategy & Software Architecture */}
-          <div className="w-full flex justify-center max-w-[400px]">
-            <IconFolder
-              title="Product & Architecture"
-              badge="PRODUCT ENGINEERING"
-              tags={[
-                "SaaS Planning",
-                "System Architecture",
-                "Database Design",
-                "RBAC",
-                "Multi-Branch",
-                "Dashboards",
-                "Workflow Design",
-              ]}
-              icons={productArchitectureIcons}
-              spread={64}
-              theme="dark"
-            />
-          </div>
+        {/* Clean Interactive Category Filter Switcher */}
+        <div className="mb-14 sm:mb-16 flex flex-wrap justify-center gap-2 sm:gap-2.5 p-1.5 rounded-full bg-neutral-900/80 border border-neutral-800/80 backdrop-blur-md shadow-inner">
+          {filterTabs.map((tab) => {
+            const isActive = activeFilter === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveFilter(tab.id)}
+                className={`relative px-4 py-2 rounded-full text-xs font-mono tracking-wide transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "text-white font-semibold shadow-xs"
+                    : "text-neutral-400 hover:text-neutral-200 hover:bg-white/5"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeFilterPill"
+                    className="absolute inset-0 rounded-full bg-neutral-800 border border-sky-400/40 shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                    transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-1.5">
+                  <span>{tab.label}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                      isActive
+                        ? "bg-sky-400/20 text-sky-300"
+                        : "bg-neutral-800 text-neutral-400"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Spacious, Balanced Responsive Grid */}
+        <motion.div
+          layout
+          className={`w-full mx-auto justify-items-center gap-x-10 sm:gap-x-12 gap-y-16 sm:gap-y-20 ${
+            filteredFolders.length === 2
+              ? "grid grid-cols-1 md:grid-cols-2 max-w-[880px]"
+              : filteredFolders.length === 3
+              ? "grid grid-cols-1 md:grid-cols-3 max-w-[1200px]"
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 max-w-[1240px]"
+          }`}
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredFolders.map((item) => (
+              <motion.div
+                key={item.id}
+                layout
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
+                className="w-full flex justify-center max-w-[390px]"
+              >
+                <IconFolder
+                  title={item.title}
+                  badge={item.badge}
+                  tags={item.tags}
+                  icons={item.icons}
+                  spread={item.spread}
+                  theme="dark"
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

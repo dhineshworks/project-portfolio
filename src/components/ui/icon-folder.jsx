@@ -296,22 +296,24 @@ export function IconFolder({
         </svg>
 
         {/* Header & Category Badge */}
-        <div style={{ padding: '38px 24px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.025em', color: '#ffffff' }}>
+        <div style={{ padding: '38px 22px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+          <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 700, letterSpacing: '-0.025em', color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {title}
           </h3>
           {badge && (
             <span
               style={{
-                fontSize: '10px',
+                fontSize: '9.5px',
                 fontFamily: 'monospace',
-                letterSpacing: '0.1em',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 padding: '2px 8px',
                 borderRadius: '9999px',
                 border: '1px solid rgba(56,189,248,0.3)',
                 color: '#38bdf8',
                 backgroundColor: 'rgba(8,47,73,0.4)',
+                flexShrink: 0,
+                whiteSpace: 'nowrap',
               }}
             >
               {badge}
@@ -320,7 +322,7 @@ export function IconFolder({
         </div>
 
         {/* Interactive Chip Tags */}
-        <div style={{ margin: '12px 18px 0', display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+        <div style={{ margin: '12px 18px 0', display: 'flex', flexWrap: 'wrap', gap: '6px', minHeight: '56px' }}>
           {tags.map((tag) => {
             const isMatch = hi !== null && icons[hi]?.label === tag;
             return (
